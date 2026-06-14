@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram AI DM Bot — README</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        ::selection { background: #F97316; color: #FFFFFF; }
+        .code-block {
+            background: #171717;
+            color: #e5e5e5;
+            border-radius: 0.75rem;
+            padding: 1.25rem 1.5rem;
+            overflow-x: auto;
+            font-size: 0.875rem;
+            line-height: 1.7;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #262626;
+        }
+        .code-block .comment { color: #6b7280; }
+        .code-block .keyword { color: #f97316; }
+        .code-block .string { color: #86efac; }
+        .code-block .variable { color: #93c5fd; }
+        .inline-code {
+            background: rgba(249,115,22,0.1);
+            color: #f97316;
+            padding: 0.15rem 0.5rem;
+            border-radius: 0.375rem;
+            font-size: 0.85em;
+            font-family: 'Courier New', monospace;
+        }
+        .glass-card {
+            background: rgba(23,23,23,0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid #262626;
+            border-radius: 1rem;
+        }
+        .step-number {
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            background: #f97316;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.3rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid;
+        }
+        .glow-line {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #f97316, transparent);
+        }
+    </style>
+</head>
+<body class="bg-black text-white min-h-screen">
+
+    <!-- Nav -->
+    <nav class="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4">
+        <div class="flex items-center justify-between w-full max-w-4xl bg-neutral-900/80 backdrop-blur-md rounded-full px-6 py-3 border border-neutral-800">
+            <div class="flex items-center gap-2">
+                <span class="iconify text-orange-500" data-icon="lucide:bot" data-width="20"></span>
+                <span class="font-semibold text-sm tracking-tight">IG AI Bot</span>
+            </div>
+            <div class="hidden md:flex items-center gap-6 text-sm text-neutral-400">
+                <a href="#setup" class="hover:text-white transition-colors">Setup</a>
+                <a href="#proxy" class="hover:text-white transition-colors">Proxy</a>
+                <a href="#usage" class="hover:text-white transition-colors">Usage</a>
+                <a href="#config" class="hover:text-white transition-colors">Config</a>
+            </div>
+            <a href="https://github.com" target="_blank" class="flex items-center gap-1.5 text-sm text-neutral-400 hover:text-white transition-colors">
+                <span class="iconify" data-icon="lucide:github" data-width="18"></span>
+                <span class="hidden sm:inline">Source</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="min-h-[70vh] flex flex-col justify-center items-center text-center pt-20 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-orange-500/5 via-transparent to-transparent pointer-events-none"></div>
+        <div class="relative z-10">
+            <div class="flex items-center justify-center gap-3 mb-6">
+                <span class="badge border-orange-500/30 bg-orange-500/10 text-orange-400">
+                    <span class="iconify" data-icon="lucide:sparkles" data-width="12"></span>
+                    LLM-Powered
+                </span>
+                <span class="badge border-neutral-700 bg-neutral-800 text-neutral-300">
+                    <span class="iconify" data-icon="lucide:message-circle" data-width="12"></span>
+                    Instagram DM
+                </span>
+            </div>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tighter leading-[1.1] mb-6">
+                Instagram<br>
+                <span class="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">AI DM Bot</span>
+            </h1>
+            <p class="text-neutral-400 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto mb-8">
+                An autonomous Instagram DM bot that listens for incoming messages and responds using an LLM — with conversation memory, proxy support, and session persistence.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a href="#setup" class="inline-flex items-center gap-2 bg-white text-black font-semibold text-sm px-7 py-3.5 rounded-full hover:bg-orange-500 hover:text-white transition-all duration-300">
+                    Get Started
+                    <span class="iconify" data-icon="lucide:arrow-down" data-width="16"></span>
+                </a>
+                <a href="#config" class="inline-flex items-center gap-2 border border-neutral-700 text-neutral-300 font-semibold text-sm px-7 py-3.5 rounded-full hover:bg-white/10 transition-all duration-300">
+                    Configuration
+                    <span class="iconify" data-icon="lucide:settings" data-width="16"></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="glow-line max-w-3xl mx-auto my-8"></div>
+
+    <!-- Features -->
+    <section class="max-w-5xl mx-auto px-4 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-card p-6 hover:border-orange-500/30 transition-all duration-500">
+                <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center mb-4">
+                    <span class="iconify text-orange-500" data-icon="lucide:brain" data-width="20"></span>
+                </div>
+                <h3 class="font-semibold text-lg tracking-tight mb-2">LLM-Powered Replies</h3>
+                <p class="text-neutral-400 text-sm leading-relaxed">Sends full conversation context to an LLM so every reply is coherent and context-aware.</p>
+            </div>
+            <div class="glass-card p-6 hover:border-orange-500/30 transition-all duration-500">
+                <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center mb-4">
+                    <span class="iconify text-orange-500" data-icon="lucide:history" data-width="20"></span>
+                </div>
+                <h3 class="font-semibold text-lg tracking-tight mb-2">Conversation Memory</h3>
+                <p class="text-neutral-400 text-sm leading-relaxed">Persists chat history across turns so the AI remembers what was said earlier in the conversation.</p>
+            </div>
+            <div class="glass-card p-6 hover:border-orange-500/30 transition-all duration-500">
+                <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center mb-4">
+                    <span class="iconify text-orange-500" data-icon="lucide:shield" data-width="20"></span>
+                </div>
+                <h3 class="font-semibold text-lg tracking-tight mb-2">Proxy Support</h3>
+                <p class="text-neutral-400 text-sm leading-relaxed">Route traffic through a proxy to avoid Instagram flagging your bot as suspicious activity.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Setup -->
+    <section id="setup" class="max-w-4xl mx-auto px-4 py-24">
+        <div class="text-center mb-14">
+            <span class="badge border-orange-500/30 bg-orange-500/10 text-orange-400 mb-4">
+                <span class="iconify" data-icon="lucide:wrench" data-width="12"></span>
+                Setup
+            </span>
+            <h2 class="text-3xl md:text-5xl font-semibold tracking-tighter mt-3">Get up and running</h2>
+            <p class="text-neutral-400 mt-3 text-lg font-light">Follow these steps to install, configure, and launch the bot.</p>
+        </div>
+
+        <div class="space-y-8">
+            <!-- Step 1 -->
+            <div class="flex gap-4">
+                <div class="step-number mt-0.5">1</div>
+                <div class="flex-1">
+                    <h3 class="font-semibold text-lg tracking-tight mb-2">Clone the repository</h3>
+                    <div class="code-block mt-2">
+<span class="comment"># Clone the repo</span>
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+cd YOUR_REPO
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flex gap-4">
+                <div class="step-number mt-0.5">2</div>
+                <div class="flex-1">
+                    <h3 class="font-semibold text-lg tracking-tight mb-2">Install dependencies</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed mb-3">
+                        The bot relies on <span class="inline-code">instagrapi</span> — an unofficial Instagram API wrapper for Python. Install it with pip:
+                    </p>
+                    <div class="code-block mt-2">
+<span class="comment"># Install instagrapi (required)</span>
+pip install instagrapi
+
+<span class="comment"># Install remaining dependencies</span>
+pip install requests
+                    </div>
+                    <p class="text-neutral-500 text-xs mt-2 leading-relaxed">
+                        <span class="iconify inline-block align-middle mr-1" data-icon="lucide:info" data-width="13"></span>
+                        <span class="inline-code">instagrapi</span> handles login, session management, sending/receiving DMs, and proxy configuration. <span class="inline-code">requests</span> is used for LLM API calls.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flex gap-4">
+                <div class="step-number mt-0.5">3</div>
+                <div class="flex-1">
+                    <h3 class="font-semibold text-lg tracking-tight mb-2">Log in & save your session</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed mb-3">
+                        Open <span class="inline-code">login.py</span> and replace the placeholder credentials with your Instagram account details, then run it. This dumps an authenticated session to <span class="inline-code">session.json</span> so the bot doesn't need your password every time.
+                    </p>
+                    <div class="code-block mt-2">
+<span class="comment"># Edit login.py with your credentials</span>
+username = <span class="string">"your_email@example.com"</span>
+password = <span class="string">"YourPassword123"</span>
+
+<span class="comment"># Then run the login script</span>
+python login.py
+                    </div>
+                    <p class="text-neutral-400 text-sm mt-3 leading-relaxed">
+                        On success you'll see:
+                    </p>
+                    <div class="code-block mt-2">
+🔐 Logging in...
+✅ Login successful!
+💾 Session dumped to session.json
+                    </div>
+                    <div class="flex items-start gap-2 mt-3 bg-orange-500/5 border border-orange-500/20 rounded-lg p-3">
+                        <span class="iconify text-orange-500 mt-0.5 flex-shrink-0" data-icon="lucide:alert-triangle" data-width="16"></span>
+                        <p class="text-neutral-400 text-xs leading-relaxed">
+                            <strong class="text-orange-400">Important:</strong> Never commit <span class="inline-code">session.json</span> to a public repository. Add it to your <span class="inline-code">.gitignore</span> immediately.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="flex gap-4">
+                <div class="step-number mt-0.5">4</div>
+                <div class="flex-1">
+                    <h3 class="font-semibold text-lg tracking-tight mb-2">Configure the bot</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed mb-3">
+                        Open <span class="inline-code">bot.py</span> and update the config section at the top of the file. At minimum, set <span class="inline-code">TARGET_USER_ID</span> to the Instagram user ID you want the bot to chat with.
+                    </p>
+                    <div class="code-block mt-2">
+TARGET_USER_ID = <span class="variable">99123456789</span>     <span class="comment"># Replace with actual Instagram user ID</span>
+POLL_INTERVAL = <span class="variable">3</span>             <span class="comment"># Seconds between message checks</span>
+MAX_MSG_LENGTH = <span class="variable">900</span>          <span class="comment"># Max chars per DM (Instagram limit)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="flex gap-4">
+                <div class="step-number mt-0.5">5</div>
+                <div class="flex-1">
+                    <h3 class="font-semibold text-lg tracking-tight mb-2">Run the bot</h3>
+                    <div class="code-block mt-2">
+python bot.py
+                    </div>
+                    <p class="text-neutral-400 text-sm mt-3 leading-relaxed">You should see output like:</p>
+                    <div class="code-block mt-2">
+🔍 Looking for DM thread with user...
+  ✅ Thread found: 340282366841710300000000000000000000
+  ℹ️  3 existing messages marked as read.
+
+🎧 Listening for new messages...
+============================================================
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="glow-line max-w-3xl mx-auto my-4"></div>
+
+    <!-- Proxy -->
+    <section id="proxy" class="max-w-4xl mx-auto px-4 py-24">
+        <div class="text-center mb-14">
+            <span class="badge border-orange-500/30 bg-orange-500/10 text-orange-400 mb-4">
+                <span class="iconify" data-icon="lucide:shield" data-width="12"></span>
+                Optional
+            </span>
+            <h2 class="text-3xl md:text-5xl font-semibold tracking-tighter mt-3">Proxy Setup</h2>
+            <p class="text-neutral-400 mt-3 text-lg font-light">Avoid Instagram flagging your bot by routing traffic through a proxy.</p>
+        </div>
+
+        <div class="glass-card p-8 md:p-10">
+            <div class="flex items-start gap-4 mb-6">
+                <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center flex-shrink-0">
+                    <span class="iconify text-orange-500" data-icon="lucide:shield-alert" data-width="24"></span>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg tracking-tight mb-1">Why use a proxy?</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Instagram monitors for automated activity. If your bot logs in and sends messages from a server IP or an unfamiliar location, Instagram may temporarily lock the account or request verification. A residential or matching-location proxy makes the traffic appear as normal browser usage.
+                    </p>
+                </div>
+            </div>
+
+            <h4 class="font-medium text-sm text-neutral-300 uppercase tracking-widest mb-4">How to configure</h4>
+
+            <p class="text-neutral-400 text-sm leading-relaxed mb-4">
+                Both <span class="inline-code">login.py</span> and <span class="inline-code">bot.py</span> have a commented-out proxy line. Uncomment it and provide your proxy URL:
+            </p>
+
+            <div class="code-block mb-4">
+<span class="comment"># ─── In login.py ───</span>
+
+cl = Client()
+cl.set_proxy(<span class="string">"http://ip:port"</span>)           <span class="comment"># HTTP proxy</span>
+<span class="comment"># cl.set_proxy("socks5://ip:port")    # SOCKS5 proxy</span>
+<span class="comment"># cl.set_proxy("http://user:pass@ip:port")  # Authenticated</span>
+
+cl.login(username, password)
+            </div>
+
+            <div class="code-block mb-4">
+<span class="comment"># ─── In bot.py ───</span>
+
+PROXY = <span class="string">"http://ip:port"</span>
+
+cl = Client()
+cl.set_proxy(PROXY)
+
+<span class="comment"># ... rest of setup</span>
+            </div>
+
+            <div class="bg-neutral-900 border border-neutral-800 rounded-xl p-5 mt-6 space-y-3">
+                <h4 class="font-medium text-sm text-neutral-200 flex items-center gap-2">
+                    <span class="iconify text-orange-500" data-icon="lucide:lightbulb" data-width="16"></span>
+                    Tips
+                </h4>
+                <ul class="space-y-2 text-sm text-neutral-400 leading-relaxed">
+                    <li class="flex items-start gap-2">
+                        <span class="text-orange-500 mt-1.5 flex-shrink-0">•</span>
+                        <span><strong class="text-neutral-300">Use a residential proxy</strong> — datacenter IPs are heavily flagged by Instagram. Residential or mobile proxies are far less likely to trigger security checks.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-orange-500 mt-1.5 flex-shrink-0">•</span>
+                        <span><strong class="text-neutral-300">Match your location</strong> — choose a proxy IP in the same country/region as your Instagram account to avoid "suspicious login location" alerts.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-orange-500 mt-1.5 flex-shrink-0">•</span>
+                        <span><strong class="text-neutral-300">Set the proxy in both files</strong> — <span class="inline-code">login.py</span> and <span class="inline-code">bot.py</span> create separate <span class="inline-code">Client()</span> instances, so you need to configure it in both places.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-orange-500 mt-1.5 flex-shrink-0">•</span>
+                        <span><strong class="text-neutral-300">Increase the poll interval</strong> — setting <span class="inline-code">POLL_INTERVAL</span> higher (e.g. 5–10 seconds) reduces API call frequency and looks more human-like.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="glow-line max-w-3xl mx-auto my-4"></div>
+
+    <!-- Usage -->
+    <section id="usage" class="max-w-4xl mx-auto px-4 py-24">
+        <div class="text-center mb-14">
+            <span class="badge border-orange-500/30 bg-orange-500/10 text-orange-400 mb-4">
+                <span class="iconify" data-icon="lucide:play" data-width="12"></span>
+                Usage
+            </span>
+            <h2 class="text-3xl md:text-5xl font-semibold tracking-tighter mt-3">How it works</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="glass-card p-6">
+                <h3 class="font-semibold tracking-tight mb-3 flex items-center gap-2">
+                    <span class="iconify text-orange-500" data-icon="lucide:log-in" data-width="18"></span>
+                    login.py
+                </h3>
+                <p class="text-neutral-400 text-sm leading-relaxed mb-4">Authenticates with Instagram and saves the session to <span class="inline-code">session.json</span>. Run this once (or whenever the session expires).</p>
+                <div class="code-block text-xs">
+python login.py
+                </div>
+            </div>
+            <div class="glass-card p-6">
+                <h3 class="font-semibold tracking-tight mb-3 flex items-center gap-2">
+                    <span class="iconify text-orange-500" data-icon="lucide:bot" data-width="18"></span>
+                    bot.py
+                </h3>
+                <p class="text-neutral-400 text-sm leading-relaxed mb-4">The main bot process. Loads the saved session, finds the target DM thread, and polls for new messages to respond to.</p>
+                <div class="code-block text-xs">
+python bot.py
+                </div>
+            </div>
+        </div>
+
+        <!-- Flow -->
+        <div class="mt-12 glass-card p-8">
+            <h3 class="font-semibold tracking-tight mb-6 flex items-center gap-2">
+                <span class="iconify text-orange-500" data-icon="lucide:git-branch" data-width="18"></span>
+                Message Flow
+            </h3>
+            <div class="space-y-4 text-sm">
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 rounded-full bg-orange-500/15 text-orange-400 flex items-center justify-center text-xs font-semibold flex-shrink-0">1</span>
+                    <span class="text-neutral-300">Bot polls the DM thread every <span class="inline-code">POLL_INTERVAL</span> seconds</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 rounded-full bg-orange-500/15 text-orange-400 flex items-center justify-center text-xs font-semibold flex-shrink-0">2</span>
+                    <span class="text-neutral-300">New text message from target user is detected</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 rounded-full bg-orange-500/15 text-orange-400 flex items-center justify-center text-xs font-semibold flex-shrink-0">3</span>
+                    <span class="text-neutral-300">A "🤔 AI is thinking…" placeholder DM is sent instantly</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 rounded-full bg-orange-500/15 text-orange-400 flex items-center justify-center text-xs font-semibold flex-shrink-0">4</span>
+                    <span class="text-neutral-300">Full conversation history is sent to the LLM endpoint</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 rounded-full bg-orange-500/15 text-orange-400 flex items-center justify-center text-xs font-semibold flex-shrink-0">5</span>
+                    <span class="text-neutral-300">LLM response is sent as a DM (auto-chunked if over 900 chars)</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="w-7 h-7 rounded-full bg-orange-500/15 text-orange-400 flex items-center justify-center text-xs font-semibold flex-shrink-0">6</span>
+                    <span class="text-neutral-300">Response is appended to conversation memory for future context</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="glow-line max-w-3xl mx-auto my-4"></div>
+
+    <!-- Config Reference -->
+    <section id="config" class="max-w-4xl mx-auto px-4 py-24">
+        <div class="text-center mb-14">
+            <span class="badge border-orange-500/30 bg-orange-500/10 text-orange-400 mb-4">
+                <span class="iconify" data-icon="lucide:settings" data-width="12"></span>
+                Reference
+            </span>
+            <h2 class="text-3xl md:text-5xl font-semibold tracking-tighter mt-3">Configuration</h2>
+            <p class="text-neutral-400 mt-3 text-lg font-light">All configurable options in <span class="inline-code">bot.py</span></p>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left">
+                <thead>
+                    <tr class="border-b border-neutral-800">
+                        <th class="py-3 px-4 font-medium text-neutral-400 uppercase text-xs tracking-widest">Variable</th>
+                        <th class="py-3 px-4 font-medium text-neutral-400 uppercase text-xs tracking-widest">Default</th>
+                        <th class="py-3 px-4 font-medium text-neutral-400 uppercase text-xs tracking-widest">Description</th>
+                    </tr>
+                </thead>
+                <tbody class="text-neutral-300">
+                    <tr class="border-b border-neutral-800/50 hover:bg-neutral-900/50 transition-colors">
+                        <td class="py-3 px-4"><span class="inline-code">TARGET_USER_ID</span></td>
+                        <td class="py-3 px-4 text-neutral-500">—</td>
+                        <td class="py-3 px-4">Instagram user ID of the person the bot should chat with</td>
+                    </tr>
+                    <tr class="border-b border-neutral-800/50 hover:bg-neutral-900/50 transition-colors">
+                        <td class="py-3 px-4"><span class="inline-code">PROXY</span></td>
+                        <td class="py-3 px-4 text-neutral-500">commented out</td>
+                        <td class="py-3 px-4">HTTP/SOCKS5 proxy URL (e.g. <span class="inline-code">"http://ip:port"</span>)</td>
+                    </tr>
+                    <tr class="border-b border-neutral-800/50 hover:bg-neutral-900/50 transition-colors">
+                        <td class="py-3 px-4"><span class="inline-code">LLM_API_URL</span></td>
+                        <td class="py-3 px-4 text-neutral-500 text-xs">kilo.ai/openrouter</td>
+                        <td class="py-3 px-4">Endpoint for the OpenAI-compatible chat completions API</td>
+                    </tr>
+                    <tr class="border-b border-neutral-800/50 hover:bg-neutral-900/50 transition-colors">
+                        <td class="py-3 px-4"><span class="inline-code">LLM_MODEL</span></td>
+                        <td class="py-3 px-4 text-xs text-neutral-500">stepfun/step-3.7-flash:free</td>
+                        <td class="py-3 px-4">Model identifier passed to the LLM API</td>
+                    </tr>
+                    <tr class="border-b border-neutral-800/50 hover:bg-neutral-900/50 transition-colors">
+                        <td class="py-3 px-4"><span class="inline-code">SYSTEM_PROMPT</span></td>
+                        <td class="py-3 px-4 text-neutral-500">—</td>
+                        <td class="py-3 px-4">System prompt that defines the AI's personality and behavior</td>
+                    </tr>
+                    <tr class="border-b border-neutral-800/50 hover:bg-neutral-900/50 transition-colors">
+                        <td class="py-3 px-4"><span class="inline-code">POLL_INTERVAL</span></td>
+                        <td class="py-3 px-4 text-orange-400">3</td>
+                        <td class="py-3 px-4">Seconds between each poll for new messages</td>
+                    </tr>
+                    <tr class="hover:bg-neutral-900/50 transition-colors">
+                        <td class="py-3 px-4"><span class="inline-code">MAX_MSG_LENGTH</span></td>
+                        <td class="py-3 px-4 text-orange-400">900</td>
+                        <td class="py-3 px-4">Maximum characters per DM; long responses are auto-split</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <div class="glow-line max-w-3xl mx-auto my-4"></div>
+
+    <!-- File Structure -->
+    <section class="max-w-4xl mx-auto px-4 py-16">
+        <h2 class="text-2xl font-semibold tracking-tighter mb-6 flex items-center gap-2">
+            <span class="iconify text-orange-500" data-icon="lucide:folder-tree" data-width="22"></span>
+            File Structure
+        </h2>
+        <div class="code-block">
+📁 project/
+├── <span class="variable">login.py</span>          <span class="comment"># Authenticate & save session</span>
+├── <span class="variable">bot.py</span>            <span class="comment"># Main bot — polls & responds to DMs</span>
+├── <span class="variable">session.json</span>      <span class="comment"># Auto-generated session data (DO NOT COMMIT)</span>
+├── <span class="variable">.gitignore</span>        <span class="comment"># Include session.json here!</span>
+└── <span class="variable">README.html</span>       <span class="comment"># This file</span>
+        </div>
+    </section>
+
+    <!-- Disclaimer -->
+    <section class="max-w-4xl mx-auto px-4 py-8 pb-24">
+        <div class="bg-neutral-900 border border-neutral-800 rounded-xl p-6 flex items-start gap-4">
+            <span class="iconify text-orange-500 flex-shrink-0 mt-0.5" data-icon="lucide:alert-triangle" data-width="20"></span>
+            <div>
+                <h4 class="font-semibold text-sm text-neutral-200 mb-1">Disclaimer</h4>
+                <p class="text-neutral-500 text-sm leading-relaxed">
+                    This project is for educational purposes only. Automating Instagram interactions violates their Terms of Service and may result in your account being temporarily or permanently banned. Use at your own risk. The authors assume no liability for any consequences arising from the use of this software.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-neutral-900 py-8 text-center text-neutral-600 text-xs">
+        <p>Built with <span class="text-orange-500">instagrapi</span> + OpenRouter LLM API</p>
+    </footer>
+
+</body>
+</html>
