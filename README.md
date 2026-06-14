@@ -1,3 +1,3 @@
 # Instagram AI DM Bot
 
-## TUTORIAL AVAILABLE AT: [Tutorial-Website](https://hamzaansari1577-lgtm.github.io/claw-code/)
+## README AVAILABLE AT: [Readme-Website](https://zoxberuos.github.io/InstaG-Bot/)
