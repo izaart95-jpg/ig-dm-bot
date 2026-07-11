@@ -1,4 +1,4 @@
 # Instagram AI DM Bot
 
 ## Information available at: 
-[Info-Website](https://zoxberuos.github.io/InstaG-Bot/)
+[Info-Website](https://mishakorkzx.github.io/InstaG-Bot/)
